@@ -1,70 +1,153 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 📝 User Feedback System
 
-## Available Scripts
+A full-stack user feedback application using **React** for the frontend and **Node.js**, **Express**, and **MongoDB (Mongoose)** for the backend. Users can submit feedback and view it in a dashboard with filtering and sorting features.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📁 Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+user-feedback-system/
+├── src/
+│   ├── app.js           # Frontend main React component
+│   └── backend/         # Backend code (Node.js + Express + Mongoose)
+│       ├── server.js    # Entry point for the backend server
+│       ├── Databaseschema.ja
+│       │                # Mongoose model for feedback
+│       └── routes.js/
+│                      # Routes handling /feedback endpoint
+├── package.json         # Root dependencies (if monorepo style)
+├── README.md            # Project documentation
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📦 Required Packages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend (`src/backend/`):
+- `express`
+- `dotenv`
+- `mongoose`
+- `cors`
+- `body-parser` *(optional)*
 
-### `npm run build`
+### Frontend (`src/app.js`):
+- `react`
+- `axios`
+- `react-router-dom` *(if routing used)*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔁 Application Workflow
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Users access the React frontend (`src/app.js`).
+2. They fill a form with:
+   - Name
+   - Email
+   - Feedback text
+3. On submit:
+   - A **POST** request is made to `/feedback`.
+   - The backend stores the feedback in **MongoDB**.
+4. The dashboard fetches all feedback using **GET** `/feedback` and allows:
+   - **Search** (e.g., by name,email or feedback)
+   - **Sort** by submission timestamp
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🖼️ Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🧾 Feedback Form
+![Feedback Form](assets/form.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🚀 Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 📥 Clone the Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/your-username/user-feedback-system.git
+cd user-feedback-system
+```
 
-### Code Splitting
+### 🖥️ Backend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Navigate to the backend folder:
 
-### Analyzing the Bundle Size
+```bash
+cd src/backend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install backend dependencies:
 
-### Making a Progressive Web App
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Create a `.env` file:
 
-### Advanced Configuration
+```
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Start the backend server:
 
-### Deployment
+```bash
+node server.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 🌐 Frontend Setup
 
-### `npm run build` fails to minify
+1. Navigate back to project root and install dependencies (if monorepo):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm install
+```
+
+2. Start the frontend React app:
+
+```bash
+npm start
+```
+
+The frontend runs at `http://localhost:3000` and the backend at `http://localhost:5000`.
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint     | Description               |
+|--------|--------------|---------------------------|
+| POST   | `/feedback`  | Submit user feedback      |
+| GET    | `/feedback`  | Retrieve all feedback     |
+
+---
+
+## 📋 Feedback Data Structure
+
+```json
+{
+  "username": "John Doe",
+  "email": "john@example.com",
+  "feedbackText": "Great app!",
+  "timestamp": "2025-06-26T12:34:56Z"
+}
+```
+
+---
+
+## 🙋 How to Contribute or Run Locally
+
+1. Fork and clone the repo.
+2. Follow the backend and frontend setup.
+3. Open in your favorite code editor.
+4. Happy coding!
+
+---
+
+## 🧾 License
+
+This project is licensed under the MIT License.
