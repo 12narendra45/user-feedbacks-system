@@ -58,7 +58,7 @@ user-feedback-system/
 ## 🖼️ Screenshots
 
 ### 🧾 Feedback Form
-![Feedback Form](Screenshot 2025-06-26 020319.png)
+![Feedback Form](assets/Screenshot 2025-06-26 020319.png)
 
 
 ---
