@@ -8,6 +8,9 @@ function App() {
   const [search,setsearch]=useState("")
   const [sortOrder, setSortOrder] = useState('desc');
 
+
+
+   //filtering and sorting the data based on user requirements
   const filterdata=feedbackdata.filter((item)=>{
      const searchedtext=search.toLowerCase()
     return(
@@ -21,6 +24,8 @@ function App() {
       : new Date(a.timestamp) - new Date(b.timestamp); 
   });
 
+
+  //Acessing the data from database
    const fetchfeedbacks=async ()=>{
     try{
     const res=await fetch('http://localhost:5000/add-data/feedback')
@@ -36,6 +41,9 @@ function App() {
         fetchfeedbacks()
    },[])
 
+
+
+   //Ading the feed back to database
   const submitForm=async (e)=>{
      e.preventDefault();
     console.log(formdata)
@@ -92,6 +100,8 @@ function App() {
           marginBottom: '10px',
           alignItems: 'center',
           }}
+
+
 >      {[1, 2, 3, 4, 5].map((star) => (<span key={star} style={{
         cursor: 'pointer',
         fontSize: '30px',
@@ -106,9 +116,10 @@ function App() {
       </span>
     ))}
     </div>
+
     <button type="submit">Submit Feedback</button>
       </form>
-
+    
       <div className="feedback-list">
         <h2>Feedbacks Given By users</h2>
 
